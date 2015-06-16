@@ -12,10 +12,6 @@ RSpec.describe StaticPagesController, type: :controller do
     it "returns http success" do
       get :home
       expect(response).to have_http_status(:success)
-    end
-
-    it "asserts title is ok"  do
-      get :home
       assert_select "title", "#{@base_title} | Home"
     end
   end
@@ -26,10 +22,6 @@ RSpec.describe StaticPagesController, type: :controller do
     it "returns http success" do
       get :help
       expect(response).to have_http_status(:success)
-    end
-
-    it "asserts title is ok"  do
-      get :help
       assert_select "title", "#{@base_title} | Help"
     end
   end
@@ -39,11 +31,16 @@ RSpec.describe StaticPagesController, type: :controller do
     it "returns http success" do
       get :about
       expect(response).to have_http_status(:success)
-    end
-
-    it "asserts title is ok"  do
-      get :about
       assert_select "title", "#{@base_title} | About"
+    end
+  end
+
+  describe "GET #contact" do
+    render_views
+    it "returns http success" do
+      get :contact
+      expect(response).to have_http_status(:success)
+      assert_select "title", "#{@base_title} | Contact"
     end
   end
 
