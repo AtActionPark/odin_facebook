@@ -1,0 +1,7 @@
+<h1>Invites </h1>
+
+<% @inviters.each do |i| %>
+  <%= i.name %>
+  <%= button_to "Accept", action: "accept_invite", method: :post, :params => {:inviter_id => i.id, :id => params[:id]} %>
+
+<% end %>

@@ -1,0 +1,11 @@
+
+  <div id="invite_form">
+    <% return if current_user == @user %>
+    <% if current_user.invitees.include?(@user) %>
+      Waiting for response
+    <% elsif !current_user.friend?(@user)  %>
+      <%= render 'invite' %>
+    <% else %>
+      Friend with you
+    <% end %>
+  </div>

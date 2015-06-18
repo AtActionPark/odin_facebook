@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150618102928) do
   end
 
   add_index "friendships", ["friend_id"], name: "index_friendships_on_friend_id", using: :btree
+  add_index "friendships", ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true, using: :btree
   add_index "friendships", ["user_id"], name: "index_friendships_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
