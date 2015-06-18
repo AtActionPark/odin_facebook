@@ -1,3 +1,22 @@
 test:
   name: Test User
   email: example@mail.com
+
+michael:
+  name: Michael Example
+  email: michael@example.com
+
+
+archer:
+  name: Sterling Archer
+  email: duchess@example.gov
+
+
+lana:
+  name: Lana Kane
+  email: hands@example.gov
+
+
+mallory:
+  name: Mallory Archer
+  email: boss@example.gov
