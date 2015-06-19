@@ -1,6 +1,7 @@
 
 class UsersController < ApplicationController
   before_action :authenticate_user!, :except => :new
+  before_action  :correct_user?, :only => :inviters
 
   def new
   end
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
     render 'show_friends'
   end
 
+  
   def inviters
     @id = params[:id]
     @inviters = User.find(@id).inviters
@@ -35,5 +37,10 @@ class UsersController < ApplicationController
     user.add_friend(User.find(inviter_id))
     redirect_to inviters_user_path
   end
+
+  private
+    def correct_user? 
+      redirect_to root_path unless current_user == User.find(params[:id])
+    end
 
 end

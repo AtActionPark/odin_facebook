@@ -8,7 +8,12 @@
       <%= link_to "delete", post, method: :delete,
                                        data: { confirm: "You sure?" } %>
     <% end %>
-    <%= link_to "Like", '#' %>
+    <% if !post.is_liked? current_user.id, post.id %>
+      <%= link_to "Like", post_likes_path(post, @like), method: :post %>
+    <% else %>
+      Liked
+    <% end %>
+    <p>Likes: <%= post.likes.count %> </p>
   </span>
   <span>
     <ul>

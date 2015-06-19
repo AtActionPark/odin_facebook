@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
+
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
@@ -8,7 +9,7 @@ class PostsController < ApplicationController
       redirect_to root_url
     else
       @feed_items = []
-      render 'static_pages/home'
+      redirect_to root_url
     end
   end
 
@@ -19,8 +20,9 @@ class PostsController < ApplicationController
     redirect_to root_url
   end
 
-  private
+  
 
+  private
     def post_params
       params.require(:post).permit(:content)
     end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+
   root             'static_pages#home'
 
   devise_for :users
@@ -9,10 +11,15 @@ Rails.application.routes.draw do
       post :accept_invite
     end
   end
-  resources :posts, only: [:create, :destroy]
+  resources :posts, only: [:create, :destroy] do
+    resources :likes, only: [:create]
+  end
   resources :friendships, only: [:create, :destroy]
   resources :friend_requests, only: [:create, :destroy]
-  resources :comments, only: [:create]
+  resources :comments, only: [:create] do
+    resources :likes, only: [:create]
+  end
+  resources :likes, only: [:create]
 
   get 'help'    => 'static_pages#help'
   get 'about'   => 'static_pages#about'
