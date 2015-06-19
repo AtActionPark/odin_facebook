@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:create, :destroy]
   resources :friendships, only: [:create, :destroy]
   resources :friend_requests, only: [:create, :destroy]
+  resources :comments, only: [:create]
 
   get 'help'    => 'static_pages#help'
   get 'about'   => 'static_pages#about'

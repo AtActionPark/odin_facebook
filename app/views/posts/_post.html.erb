@@ -8,9 +8,12 @@
       <%= link_to "delete", post, method: :delete,
                                        data: { confirm: "You sure?" } %>
     <% end %>
+    <%= link_to "Like", '#' %>
   </span>
   <span>
-    <%= link_to "Like", '#' %>
-    <%= link_to "Comment", '#' %>
+    <ul>
+    <%= render post.comments %>
+  </ul>
+    <%= render 'comments/comment_form', post: post %>
   </span>
 </li>
