@@ -2,6 +2,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :except => :new
   before_action  :correct_user?, :only => :inviters
+  
+
 
   def new
   end
@@ -42,5 +44,4 @@ class UsersController < ApplicationController
     def correct_user? 
       redirect_to root_path unless current_user == User.find(params[:id])
     end
-
 end
