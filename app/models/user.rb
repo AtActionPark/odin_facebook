@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   validates :name, presence: :true
 
-  after_create :send_welcome_mail
+  #after_create :send_welcome_mail
 
   def feed
     Post.where("user_id IN (:friend_ids) OR user_id = :user_id",
@@ -62,5 +62,5 @@ class User < ActiveRecord::Base
 
   def send_welcome_mail
       UserMailer.welcome_email(self).deliver_now
-    end
+  end
 end
